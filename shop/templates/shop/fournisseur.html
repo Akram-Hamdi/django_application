@@ -1,0 +1,84 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Blog -->
+<section id="blog">
+
+    <div class="content-box-md">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-5 col-sm-4 wow slideInLeft">
+
+                    <div id="blog-left">
+
+                        <div class="vertical-heading">
+                            <h5>Liste de</h5><br><br>
+                            <h2><strong>Notre</strong>Fournisseurs</h2>
+                        </div>
+                        <br><br><br>
+
+                        <div id="blog-btn">
+                            {% if user.is_authenticated and user.is_superuser %}
+                            <a class="btn btn-general btn-yellow" href="{% url 'ajouter_fournisseur' %}"><span>Ajouter
+                                fournisseur</span></a>
+                            {% endif %}<br><br><br>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-7 col-sm-8">
+
+                    <div class="row wow fadeInUp" data-wow-duration="3s">
+
+
+                        {% for fournisseurs in fournisseur%}
+                        <div class="col-md-6 col-sm-6">
+
+                            <!-- Blog Post 01 -->
+                            <div class="blog-post">
+
+                                <h4>{{fournisseurs.nom}}</h4>
+                                <p>{{fournisseurs.telephone}}</p>
+                                <a>{{fournisseurs.email}} </a>
+                                {% if user.is_authenticated and user.is_superuser %}
+                                <div class="post-meta">
+                                    <div class="row">
+
+                                        <div class="col-md-6 col-sm-8 col-xs-5">
+                                            <a href="{% url 'modifier_fournisseur' fournisseurs.id %}"
+                                                class=""><span>Modifier&ensp;{{produit.libelle}}</span></a>
+                                        </div>
+                                        <div class="col-md-6 col-sm-4 col-xs-7">
+                                            <a href="{% url 'delete_fournisseur' fournisseurs.id %}"
+                                                class=""><span>Supprimer&ensp;{{produit.libelle}}</span></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- Blog Ends -->
+{% endblock %}

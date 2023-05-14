@@ -1,0 +1,150 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Stats -->
+<section id="stats">
+
+    <div class="content-box-md">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12 wow slideInLeft">
+
+                    <div class="vertical-heading">
+                        <h5>Faits amusants</h5>
+                        <h2>Nous livrons<br><strong>Excellent</strong> Services</h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row wow fadeInUp" data-wow-duration="2s">
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+
+                    <!-- Stats Item 01 -->
+                    <div class="stats-item text-center">
+                        <i class="fa fa-bar-chart"></i>
+                        <h3 class="counter">25</h3>
+                        <p>Années d'expérience</p>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+
+                    <!-- Stats Item 02 -->
+                    <div class="stats-item text-center">
+                        <i class="fa fa-codepen"></i>
+                        <h3 class="counter">476.584</h3>
+                        <p>Commandes livrées</p>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+
+                    <!-- Stats Item 03 -->
+                    <div class="stats-item text-center">
+                        <i class="fa fa-trophy"></i>
+                        <h3 class="counter">115</h3>
+                        <p>Prix ​​reçus</p>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+
+                    <!-- Stats Item 04 -->
+                    <div class="stats-item text-center">
+                        <i class="fa fa-users"></i>
+                        <h3 class="counter">276.301</h3>
+                        <p>Clients satisfait</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- Stats Ends -->
+
+<!-- Clients -->
+<section id="clients">
+
+    <div class="content-box-sm">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12 text-center">
+
+                    <div class="horizontal-heading">
+                        <h5>Fournisseurs satisfait</h5>
+                        <h2>Notre heureux <strong>Fournisseurs</strong></h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row wow bounceInLeft" data-wow-duration="1s" data-wow-delay=".5s">
+
+                <div class="col-md-12">
+
+                    <div id="clients-list" class="owl-carousel owl-theme">
+
+                        <!-- Client 01 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-1.png' %}" class="img-responsive" alt="client">
+                        </div>
+
+                        <!-- Client 02 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-2.png' %}" class="img-responsive" alt="client">
+                        </div>
+                        <!-- Client 03 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-3.png' %}" class="img-responsive" alt="client">
+                        </div>
+                        <!-- Client 04 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-4.png' %}" class="img-responsive" alt="client">
+                        </div>
+                        <!-- Client 05 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-5.png' %}" class="img-responsive" alt="client">
+                        </div>
+                        <!-- Client 06 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-6.png' %}" class="img-responsive" alt="client">
+                        </div>
+                        <!-- Client 07 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-7.png' %}" class="img-responsive" alt="client">
+                        </div>
+                        <!-- Client 08 -->
+                        <div class="client">
+                            <img src="{% static 'img/client/client-8.png' %}" class="img-responsive" alt="client">
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- Clients Ends -->
+
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Portfolio -->
+
+
+<section id="portfolio">
+
+    <div class="content-box-md">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12 wow slideInLeft">
+
+                    <div class="vertical-heading">
+                        <h5>Nos Produits</h5>
+                        <h2>Trouver <br>Votre <strong>Produits</strong></h2>
+                    </div>
+                    <div id="blog-btn">
+                        {% if user.is_authenticated and user.is_superuser %}
+                        <a class="btn btn-general btn-yellow" href="{% url 'ajouter_produit' %}"><span>Ajouter
+                                Produit</span></a>
+                        {% endif %}<br><br>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <!-- Portfolio Items Filters -->
+                    <div id="isotope-filters">
+
+                        <a href="{% url 'produit' %}">
+                            <button class="btn"><span>All</span></button>
+                        </a>
+                        <a href="{% url 'filter_by_category' 'AL' %}">
+                            <button class="btn"><span>Alimentaire</span></button>
+                        </a>
+                        <a href="{% url 'filter_by_category' 'El' %}">
+                            <button class="btn"><span>Electronique</span></button>
+                        </a>
+                        <a href="{% url 'filter_by_category' 'Lg' %}">
+                            <button class="btn"><span>Ligne de maison</span></button>
+                        </a>
+                        <a href="{% url 'filter_by_category' 'DC' %}">
+                            <button class="btn"><span>Design Creation</span></button>
+                        </a><br>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Portfolio Items Wrapper -->
+        <section id="portfolio-wrapper" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+
+            <div class="container-fluid">
+
+                <div class="row no-gutters">
+
+                    <div id="isotope-container">
+
+                        {% for produit in produits %}
+                        <div class="col-md-3 col-sm-6 col-xs-12 desktop">
+                            <!-- Portfolio Item 01 -->
+                            <div class="portfolio-item">
+
+                                <a href="{{produit.img.url}}" title="Add Description">
+                                    <img src="{{produit.img.url}}" class="img-responsive" alt="portfolio 01">
+
+                                    <div class="portfolio-item-overlay">
+                                        <div class="portfolio-item-details text-center">
+
+                                            <!-- Item Header -->
+                                            <h3>{{produit.libelle}}</h3>
+
+                                            <!-- Item Strips -->
+                                            <span></span>
+
+                                            <!-- Item Description -->
+                                            <p>{{produit.prix}} DT, {{produit.description}}</p>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section> <br><br>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produit in produits %}
+                    <tr>
+                        <td>{{ produit.libelle }}</td>
+                        <td>{{ produit.description }}</td>
+                        <td>{{ produit.prix }} DT</td>
+
+                        <td>
+                            {% if user.is_authenticated and user.is_superuser %}
+                            <a href="{% url 'modifier_produit' produit.id %}" class="btn btn-warning me-2">
+                                Modifier
+                            </a>
+                            <a href="{% url 'delete_produit' produit.id %}" class="btn btn-danger me-2">
+                                Supprimer
+                            </a>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'ajouter_au_panier' produit.id %}" class="btn btn-success">
+                                Acheter
+                            </a>
+                            {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-success">
+                                Connectez-vous pour acheter
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</section>
+
+<!-- Portfolio Ends -->
+{% endblock %}

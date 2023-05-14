@@ -1,0 +1,51 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+
+
+<center><section>
+  <br><br><br>
+  <br>
+  <h1>Votre panier</h1>
+
+  {% if produits %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for produit in produits %}
+      <tr>
+        <td>{{ produit.produit.libelle }}</td>
+        <td>{{ produit.quantite }}</td>
+        <td>{{ produit.prix_total }} $</td>
+        <td>
+        <a href="{% url 'supprimer_produit' produit_id=produit.produit.id %}" class="btn btn-danger">Supprimer</a>
+        </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2"><strong>Total</strong></td>
+        <td colspan="2"><strong>{{ total }} $</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <form action="{% url 'vider_panier' %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger">Vider le panier</button>
+  </form>
+
+  {% else %}
+  <p>Votre panier est vide.</p>
+  {% endif %} <br>
+  <a href="{% url 'produit' %}" class="btn btn-success">Retour à la liste des produits</a>
+  <br><br><br>
+  <br><br><br>
+
+</section></center>
+
+{% endblock %}
